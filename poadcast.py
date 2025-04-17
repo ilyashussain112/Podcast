@@ -1,14 +1,20 @@
-from ..src.loading import Load
-from .model_loading import Ask
+from src.loading import Load
+from model.model_loading import Ask
 from prompts import Prompts
-from .gen_voice import Voice
+from model.gen_voice import Voice
+
 import fitz 
 import os 
 import asyncio
 import ast
 from pydub import AudioSegment
+import imageio_ffmpeg
+AudioSegment.converter = imageio_ffmpeg.get_ffmpeg_exe() 
 from gtts import gTTS
-import files
+from pydub import AudioSegment
+
+
+# import files
 
 voice = Voice()
 generate_edge_voice = voice.generate_edge_voice
@@ -75,4 +81,8 @@ class Poadcast:
 
         final_podcast.export("podcast_episode.mp3", format="mp3")
         print("✅ Podcast Ready!")
-        files.download("podcast_episode.mp3")
+        print("🔊 Saved as: podcast_episode.mp3. You can play it from your file explorer.")
+
+if __name__ == "__main__":
+    podcast = Poadcast()
+    podcast.generate_podcast_from_pdf("Attention-Is-All-You-Need.pdf")

@@ -90,6 +90,14 @@ class Prompts:
                 ("Speaker 1", "Ah, great question! Llama 3.2 is an open-source AI model that allows developers to fine-tune, distill, and deploy AI models anywhere. It's a significant update from the previous version, with improved performance, efficiency, and customization options."),
                 ("Speaker 2", "That sounds amazing! What are some of the key features of Llama 3.2?")
             ]
+            ALL expressions like [laughs], [sigh], "umm", and "hmm" MUST be part of the string itself. NEVER place them outside the quotes or mix with syntax. The response must be valid Python and parsable with `ast.literal_eval()`.
+            You are a formatting assistant. You take a podcast script and convert it into a list of tuples, where each tuple represents a speaker and their line. Format should strictly be:
+            [("Speaker 1", "Line here."), ("Speaker 2", "Line here.")]
+
+            Return ONLY the list — no explanations, no extra text, no "Let me know" messages.
+
+            Make sure the output is syntactically valid Python — all strings must be properly quoted and closed.
+
             """
     def get_all(self):
         return self.SYS_PROMPT, self.SYSTEM_PROMPT, self.SYSTEM_PROMPT2
