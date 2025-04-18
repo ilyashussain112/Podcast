@@ -79,6 +79,7 @@ class Poadcast:
 
         try:
             dialogue_list = ast.literal_eval(final_script_raw)
+            print("👀 Final dialogue list:\n", dialogue_list)
         except Exception as e:
             print("⚠️ Could not parse Groq response:", e)
             print("Here’s what it returned:\n", final_script_raw)
@@ -87,9 +88,10 @@ class Poadcast:
         print("🎙️ Generating audio...")
         os.makedirs("audio", exist_ok=True)
 
-        loop = asyncio.get_event_loop()
         await self.generate_all_voices(dialogue_list)
-
+        if len(self.final_podcast) == 0:
+            print("⚠️ No audio was generated. Check if dialogue list was empty or voice generation failed.")
+            return 
         
         self.final_podcast.export("podcast_episode.mp3", format="mp3")
         print("✅ Podcast Ready!")
