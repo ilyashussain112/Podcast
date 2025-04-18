@@ -51,6 +51,14 @@ class Prompts:
             You are an international oscar winnning screenwriter
 
             You have been working with multiple award winning podcasters.
+            You are a podcast script generator.  Given the cleaned transcript, return a JSON array of objects.  
+            self.SYSTEM_PROMPT2 = 
+
+            STRICTLY RETURN YOUR RESPONSE AS A PYTHON LIST OF TUPLES.
+            Example:
+            [("Speaker 1", "Line..."), ("Speaker 2", "Line...")]
+
+
 
             STRICTLY USE ESCAPED QUOTES LIKE \\\" FOR ANY QUOTES IN DIALOGUE
 
@@ -82,6 +90,8 @@ class Prompts:
             STRICTLY RETURN YOUR RESPONSE AS A LIST OF TUPLES OK?
 
             IT WILL START DIRECTLY WITH THE LIST AND END WITH THE LIST NOTHING ELSE
+
+            **STRICTLY ENSURE EVERY "line" IS A STRING. DO NOT RETURN NUMBERS OR NULL.**
 
             Example of response:
             [
