@@ -1,0 +1,12 @@
+fitz 
+json
+os
+asyncio
+gtts
+imageio_ffmpeg
+AudioSegment
+pydub
+edge-tts
+pydub
+imageio_ffmpeg
+gTTS
